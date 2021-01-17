@@ -9,7 +9,9 @@ def logger_factory(file):
                 f.write(f'Название функции: {func.__name__}\n')
                 f.write(f'Аргументы функции: {args} и {kwargs}\n')
                 f.write(f'Возращаемое значение: {func(*args, **kwargs)}\n')
-            return 'new_func - Done!'
+            with open(file, 'r', encoding='utf-8') as file_read:
+                result = file_read.read()
+            return result
         return new_func
     return logger
 
@@ -26,4 +28,5 @@ def my_generator(file):
                 yield "Error"
 
 if __name__ == '__main__':
-    print(my_generator('result1.txt'))
+    var = my_generator('result1.txt')
+    print(var)
